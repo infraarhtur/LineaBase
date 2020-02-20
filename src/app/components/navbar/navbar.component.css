@@ -1,0 +1,15 @@
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%);
+}
+#sidebar ul li.active>a, a[aria-expanded="true"] {
+  color: #fff;
+  background:none;
+}
+
+.dropdown-menu-right {
+  right: 0 !important;
+}

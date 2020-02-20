@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "idTipoDoc": "CC",
+    "numeroDocumento": "102627515",
+    "nombre": "luis",
+    "apellido": "Monsalve",
+    "nombreUsuario": "lmonsalve",
+    "correo": "luismonsalve@cbit-online.com",
+    "fechaCreacion": "2020-01-20T16:45:45.554Z",
+    " nombreUsuarioCreacion": "luismonsalve@cbit-online.com",
+    "estado": true,
+    "roles": [
+      {
+        "id": "1",
+        "descripcion": "Admin",
+        "vistas": [
+          {
+            "id": "1",
+            "nombre": "Usuarios"
+          },
+          {
+            "id": "2",
+            "nombre": "configuracion"
+          }
+        ]
+      }
+    ]
+  }
+]

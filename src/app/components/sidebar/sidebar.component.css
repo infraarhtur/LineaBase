@@ -1,0 +1,31 @@
+#sidebar {
+    height: 100vh;
+}
+
+#sidebar ul.menu li a.opcion-raiz,
+#sidebar ul.menu li.menu-padre a.opcion-padre {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+#sidebar ul.menu li a .icono.left {
+    float: left;
+    margin-right: 10px;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+#sidebar ul.menu li.menu-padre a.opcion-padre .icono.right {
+    float: right !important;
+    margin-left: 10px;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+#sidebar ul.menu li.menu-padre ul {
+    overflow: hidden;
+}
+
+.scrollable {
+    overflow-y: auto;
+}

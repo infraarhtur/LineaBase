@@ -1,0 +1,52 @@
+<div [@fadeIn]>
+    <div class="row">
+        <div class="col">
+            <h4 class="mr-3" style="margin-top:20px; margin-bottom:15px">Administración de Usuarios</h4>
+        </div>
+    </div>
+    <div class="row mb-sm-2">
+        <div class="col-6">
+            <button type="button" class="btn btn-primary rounded-circle" ngbTooltip="Crear usuario" placement="right" (click)="abrirModalEditar()">
+                <i class="fa fa-plus"></i>
+            </button>
+        </div>
+        <div class="col-6">
+            <tabla-filtro-buscar #tfb [paginacionService]="tablaPag.paginacionService" [lista]="usuarios" [($listaObservable)]="usuarioFiltro$"></tabla-filtro-buscar>
+        </div>
+    </div>
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Nombre(s)</th>
+                <th scope="col">Apellido(s)</th>
+                <th scope="col">Nombre Usuario</th>
+                <th scope="col">Operaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarioFiltro$ | async; index as i">
+
+                <td>
+                    <ngb-highlight [result]="usuario.nombre" [term]="tfb.filtroTabla.value"></ngb-highlight>
+                </td>
+                <td>
+                    <ngb-highlight [result]="usuario.apellido" [term]="tfb.filtroTabla.value"></ngb-highlight>
+                </td>
+                <td>
+                    <ngb-highlight [result]="usuario.nombreUsuario" [term]="tfb.filtroTabla.value"></ngb-highlight>
+                </td>
+                <td class="text-center">
+                    <div class="btn-group btn-group-sm">
+                        <button class="btn btn-primary" (click)="abrirModalEditar(usuario)" ngbTooltip="Editar" placement="left">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <tabla-paginacion #tablaPag [lista]="usuarios" [($listaObservable)]="usuarioFiltro$"></tabla-paginacion>
+
+    <app-modal-editar [usuario]="usuario" [listas]="listas" [(esUsuarioCreadoOModificado)]="esUsuarioCreadoOModificado"></app-modal-editar>
+</div>

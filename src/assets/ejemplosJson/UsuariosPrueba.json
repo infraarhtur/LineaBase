@@ -1,0 +1,131 @@
+[
+  {
+    "id": "a1882412-62ee-4cc9-b3cb-4c92c4856c02",
+    "idTipoDoc": 1,
+    "numeroDocumento": "1018476097",
+    "nombre": "Andres",
+    "apellido": "Cubides",
+    "nombreUsuario": "andrescubides",
+    "correo": "andrescubides@cbit-online.com",
+    "nombreUsuarioCreacion": "kurtrodriguez",
+    "fechaCreacion": "2019-11-28T10:04:49",
+    "estado": true,
+    "roles": [
+      {
+        "id": "97b0f748-0f9b-47da-8d81-dac37adbf829",
+        "descripcion": null,
+        "vistas": null
+      }
+    ]
+  },
+  {
+    "id": "9421927f-a4b1-4a9a-8bcd-617f7215b51a",
+    "idTipoDoc": 1,
+    "numeroDocumento": "1023954027",
+    "nombre": "Camilo",
+    "apellido": "Soler",
+    "nombreUsuario": "camilosoler",
+    "correo": "camilosoler@cbit-online.com",
+    "nombreUsuarioCreacion": "kurtrodriguez",
+    "fechaCreacion": "2019-11-28T09:40:11",
+    "estado": true,
+    "roles": [
+      {
+        "id": "97b0f748-0f9b-47da-8d81-dac37adbf829",
+        "descripcion": null,
+        "vistas": null
+      }
+    ]
+  },
+  {
+    "id": "6e3fc721-96ba-4b8f-88bf-6270809ec741",
+    "idTipoDoc": 1,
+    "numeroDocumento": "1022363",
+    "nombre": "Camilo",
+    "apellido": "Romero",
+    "nombreUsuario": "diego.peralta",
+    "correo": "ecromero@hmmc.com.co",
+    "nombreUsuarioCreacion": "administrador",
+    "fechaCreacion": "2019-11-28T09:30:47",
+    "estado": true,
+    "roles": [
+      {
+        "id": "97b0f748-0f9b-47da-8d81-dac37adbf829",
+        "descripcion": null,
+        "vistas": null
+      }
+    ]
+  },
+  {
+    "id": "543ed68f-1827-4a4a-a40e-96bc4ac92be7",
+    "idTipoDoc": 1,
+    "numeroDocumento": "1015469941",
+    "nombre": "Kurt",
+    "apellido": "Rodriguez",
+    "nombreUsuario": "kurtrodriguez",
+    "correo": "kurtrodriguez@cbit-online.com",
+    "nombreUsuarioCreacion": "string",
+    "fechaCreacion": "2019-11-28T09:37:34",
+    "estado": true,
+    "roles": [
+      {
+        "id": "97b0f748-0f9b-47da-8d81-dac37adbf829",
+        "descripcion": null,
+        "vistas": null
+      }
+    ]
+  },
+  {
+    "id": "6f0bfdb4-803b-46fe-b2e6-d0f2de39dc13",
+    "idTipoDoc": 1,
+    "numeroDocumento": "1032416390",
+    "nombre": "Jorge Leonardo",
+    "apellido": "Quevedo Diaz",
+    "nombreUsuario": "jorgequevedo",
+    "correo": "jorgequevedo@cbit-online.com",
+    "nombreUsuarioCreacion": "administrador",
+    "fechaCreacion": "2019-12-04T14:10:13",
+    "estado": true,
+    "roles": [
+      {
+        "id": "97b0f748-0f9b-47da-8d81-dac37adbf829",
+        "descripcion": null,
+        "vistas": null
+      }
+    ]
+  },
+  {
+    "id": "58eea2f7-7b47-4f9c-a07f-d7411510d939",
+    "idTipoDoc": 1,
+    "numeroDocumento": "102627551555",
+    "nombre": "luis",
+    "apellido": "monsalve",
+    "nombreUsuario": "luismonsalve",
+    "correo": "infraarhtur@gmail.com",
+    "nombreUsuarioCreacion": "administrador",
+    "fechaCreacion": "2020-01-20T16:24:43",
+    "estado": true,
+    "roles": [
+      {
+        "id": "1ebfb9cd-0f6e-44f9-8b09-203461fb48cd",
+        "descripcion": null,
+        "vistas": null
+      },
+      {
+        "id": "4150531a-22e4-46ef-ae43-6d98a8eca3c0",
+        "descripcion": null,
+        "vistas": null
+      },
+      {
+        "id": "97b0f748-0f9b-47da-8d81-dac37adbf829",
+        "descripcion": null,
+        "vistas": null
+      },
+      {
+        "id": "c109d19f-4b78-494a-acef-1adce6f8492f",
+        "descripcion": null,
+        "vistas": null
+      }
+    ]
+  }
+]

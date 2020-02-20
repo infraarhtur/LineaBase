@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "partName": "VALVE ASSY",
+      "NumberParts": "S48U0E0080",
+      "minimumPurchase": "1",
+      "vehicule": "20",
+      "start_date": "15",
+      "salary": "12"
+    },
+    {
+      "partName": "SWITCH ASSY",
+      "NumberParts": "S833802331",
+      "minimumPurchase": "64",
+      "vehicule": "20",
+      "start_date": "18",
+      "salary": "5"
+    },
+    {
+      "partName": "ELBOW",
+      "NumberParts": "SN35211217",
+      "minimumPurchase": "8",
+      "vehicule": "20",
+      "start_date": "20",
+      "salary": "1"
+    },
+    {
+      "partName": "Bradley",
+      "NumberParts": "SN35211217",
+      "minimumPurchase": "19",
+      "vehicule": "40",
+      "start_date": "1",
+      "salary": "-1"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "data": [
+    {
+      "partName": "VALVE ASSY",
+      "currentInventory": "60",
+      "month1": "28,12",
+      "month2": "72,-40",
+      "minimumAmount":"15"
+
+    },
+    {
+      "partName": "SWITCH ASSY",
+      "currentInventory": "60",
+      "month1": "28,32",
+      "month2": "72,-40",
+      "minimumAmount":"15"
+    },
+    {
+      "partName": "ELBOW",
+      "currentInventory": "60",
+      "month1": "28,32",
+      "month2": "72,-40",
+      "minimumAmount":"30"
+    },
+    {
+      "partName": "Bradley",
+      "currentInventory": "60",
+      "month1": "28,32",
+      "month2": "72,-40",
+      "minimumAmount":"35"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "Item1": [
+      {
+          "id": 1,
+          "idStr": null,
+          "nombre": "Cédula de Ciudadanía"
+      },
+      {
+          "id": 2,
+          "idStr": null,
+          "nombre": "Cédula de Extranjería"
+      },
+      {
+          "id": 3,
+          "idStr": null,
+          "nombre": "Pasaporte"
+      },
+      {
+          "id": 4,
+          "idStr": null,
+          "nombre": "Registro Civil"
+      },
+      {
+          "id": 5,
+          "idStr": null,
+          "nombre": "Tarjeta de Identidad"
+      }
+  ],
+  "Item2": [
+      {
+          "id": 0,
+          "idStr": "C109D19F-4B78-494A-ACEF-1ADCE6F8492F",
+          "nombre": "Supervisora de Operacion"
+      },
+      {
+          "id": 0,
+          "idStr": "1EBFB9CD-0F6E-44F9-8B09-203461FB48CD",
+          "nombre": "Jefe de Produccion"
+      },
+      {
+          "id": 0,
+          "idStr": "4150531A-22E4-46EF-AE43-6D98A8ECA3C0",
+          "nombre": "Supervisor de Produccion"
+      },
+      {
+          "id": 0,
+          "idStr": "97B0F748-0F9B-47DA-8D81-DAC37ADBF829",
+          "nombre": "Super Administrador"
+      }
+  ]
+}

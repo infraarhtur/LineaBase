@@ -1,0 +1,9 @@
+<nav id="sidebar" class="sticky-top sticky-offset scrollable">
+    <div class="sidebar-header">
+        <h3>Seguros Alfa</h3>
+    </div>
+
+    <ul class="list-unstyled components menu" #menuPrincipal>
+        <app-menu-grupo *ngIf="!_.isNil(menuData) && menuData.length > 0" [menuData]="menuData" [estadoActual]="estadoActual"></app-menu-grupo>
+    </ul>
+</nav>

@@ -1,0 +1,56 @@
+[
+  {
+    "titulo": "Admin. usuarios",
+    "ruta": "Usuarios/home"
+  },
+  {
+    "nombreCorto": "menuPartes",
+    "titulo": "Complemento C.K.D",
+    "hijos": [
+      {
+        "titulo": "Gestión",
+        "ruta": "Proyection/AdminPartes"
+      },
+      {
+        "titulo": "Proyección",
+        "ruta": "Proyection/home"
+      },
+      {
+        "titulo": "Creadas",
+        "ruta": "ordenCompra/Creadas"
+      },
+      {
+        "titulo": "Por autorizar",
+        "ruta": "ordenCompra/listadoPorAutorizar"
+      }
+    ]
+  },
+  {
+    "nombreCorto": "importaciones",
+    "titulo": "Ctrl de Importaciones",
+    "hijos": [
+      {
+        "titulo": "Inicio",
+        "ruta": "ctrlImportaciones/home"
+      },
+      {
+        "titulo": "Proyección home",
+        "ruta": "Proyection/home"
+      }
+    ]
+  },
+  {
+    "nombreCorto": "LF",
+    "titulo": "Contabilidad",
+    "hijos": [
+      {
+        "titulo": "Liquidación Factura",
+        "ruta": "LF/liquidacion"
+      },
+      {
+        "titulo": "Kardex",
+        "ruta": "LF/kardex"
+      }
+    ]
+  }
+]

@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-expand-md navbar-light bg-light sticky-top sticky-offset">
+
+  <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="mostrarUOcultarSidebar()">
+    <i class="fa fa-align-justify"></i> <span> </span>
+  </button>
+
+  <!--<a class="navbar-brand" href="#">Navbar</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+
+
+
+      <!-- <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li> -->
+
+      <!-- <i (click)="actualizarNotificacion()"  *ngIf="isNotificaciones" aria-hidden="true"> <span placement="bottom" ngbTooltip="Ocultar Notificaciones" class="fa fa-eye-slash" style="cursor: pointer;"> </span></i> -->
+
+      <li class="nav-item dropdown  mr-4" ngbDropdown>
+        <!-- <a class="nav-link dropdown-toggle " id="ddlNotificacion" ngbDropdownToggle> -->
+        <!-- <i class="fa fa-bell"   aria-hidden="true"></i> Notificación  <span *ngIf="isNotificaciones" class="badge badge-pill badge-danger">{{this.cantidadNotificaciones}}</span></a> -->
+
+        <!-- <div class="dropdown-menu" aria-labelledby="ddlNotificacion"  *ngIf="isNotificaciones" ngbDropdownMenu style="width: 300px;height:500px; overflow-y: auto;"> -->
+
+        <!-- <div class="px-2 py-1"> -->
+
+          <!-- <div class=""  *ngFor="let notificacion of this._notificaciones">
+
+                    <p class="alert alert-warning m-2" >
+                        <span for="" class=" text-primary" style="font-size: 13px; display: block;">{{notificacion.titulo}}</span>
+                      <label style="font-size: 12px;"> {{notificacion.descripcion}}</label>
+                      </p>
+                  </div>  -->
+
+        <!-- </div> -->
+        <!-- </div>  -->
+      </li>
+
+      <li class="nav-item dropdown mr-5" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="dropdown04" ngbDropdownToggle>
+          <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          {{this._usuario.nombre}}
+        </a>
+        <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown04" ngbDropdownMenu>
+          <!-- <a class="dropdown-item" href="#"><i class="fa fa-area-chart" aria-hidden="true"></i> Action</a>
+          <a class="dropdown-item" href="#"><i class="fa fa-cog"></i> Another action</a> -->
+          <a class="dropdown-item" (click)="cerrarSesion()"><i class="fa fa-power-off"></i> Cerrar sesión</a>
+        </div>
+      </li>
+
+
+
+    </ul>
+  </div>
+
+
+
+  <!-- <i class=""></i> -->
+
+
+</nav>

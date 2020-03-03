@@ -1,5 +1,7 @@
 li a.opcion-raiz,
-li.menu-padre a.opcion-padre {
+li.menu-padre a.opcion-padre,
+
+li a.no-tiene-padre  {
     font-size: 0.9em !important;
     font-weight: bold;
 }

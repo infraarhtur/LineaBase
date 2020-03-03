@@ -28,7 +28,7 @@ export class LoginService {
   private esUsuarioLogueado$ = new BehaviorSubject<boolean>(false);
   public urlBase = '';
   public user: Login;
-  public infoUserTemporal = '../../assets/sesion.json'
+  public infoUserTemporal = '../../assets/sesionFake.json';
 
   constructor(private _HTTP: HttpClient) {
     this.urlBase = environment.urlBaseServicio;

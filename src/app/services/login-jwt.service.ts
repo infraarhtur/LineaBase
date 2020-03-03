@@ -33,7 +33,8 @@ export class LoginJwtService {
   private esUsuarioLogueado$ = new BehaviorSubject<boolean>(false);
   public urlBase = '';
   public user: Login;
-  public infoUserTemporal = '../../assets/sesionFake.json';
+  public infoUserTemporal = '/assets/sesionFake.json';
+  // public infoUserTemporal = '/assets/datosdeprueba.json';
   public httpOptions = new HttpHeaders()
     .append('Content-Type', 'application/json; charset=UTF-8');
 
@@ -47,30 +48,30 @@ export class LoginJwtService {
   }
 
   logIn(credencialesUsuario: Login, catchErrors = true): Observable<any> {
-    // const url = `${this.urlBase}/api/auth/signin`;
+    const url = `${this.urlBase}/api/auth/signin`;
 
-    // const headers = this.httpOptions
-    //   .append('Errores-Manejo-Manual', 'true');
-    // const httpOptions = new HttpHeaders().append('Content-Type', 'application/json; charset=UTF-8');
+    const headers = this.httpOptions
+      .append('Errores-Manejo-Manual', 'true');
+    const httpOptions = new HttpHeaders().append('Content-Type', 'application/json; charset=UTF-8');
 
-    // var login = {
-    //   // password: "123",
-    //   // userName: "Admin"
-    //   password: credencialesUsuario.contrasena,
-    //   userName: credencialesUsuario.usuario
-    // }
-    // debugger;
-    // const respuestaObservable = this.http
-    //   .post(url, login, { headers: httpOptions });
+    var login = {
+      // password: "123",
+      // userName: "Admin"
+      password: credencialesUsuario.contrasena,
+      userName: credencialesUsuario.usuario
+    }
+    
+    const respuestaObservable = this.http
+      .post(url, login, { headers: httpOptions });
 
-    // if (catchErrors) {
-    //   debugger;
-    //   return respuestaObservable.catch(this.errorHandler);
-    // }
+    if (catchErrors) {
+      
+      return respuestaObservable.catch(this.errorHandler);
+    }
 
     // return respuestaObservable;
 
-      return this.http .get(this.infoUserTemporal);
+     return this.http .get(this.infoUserTemporal);
 
 
   }

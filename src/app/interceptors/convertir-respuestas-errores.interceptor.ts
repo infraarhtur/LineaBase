@@ -44,7 +44,7 @@ export class ConvertirRespuestasErroresInterceptor implements HttpInterceptor {
 
   private __mostrarAlerta = false;
 
-  constructor(private __utilidadesService: UtilidadesService) {}
+  constructor(private __utilidadesService: UtilidadesService) { }
 
   intercept(
     req: HttpRequest<any>,
@@ -112,7 +112,8 @@ export class ConvertirRespuestasErroresInterceptor implements HttpInterceptor {
 
   obtenerCodigoEstado(event: HttpResponse<any>): number {
     const respuesta = this.obtenerRespuesta(event);
-
+    // instanceof Devuelve trues si el objeto 
+    //pertenece a la Class o una clase que hereda de ella
     if (respuesta instanceof Respuesta) {
       return _.toNumber(respuesta.codigoEstado);
     } else if (respuesta instanceof ErrorNoControlado) {
@@ -159,7 +160,7 @@ export class ConvertirRespuestasErroresInterceptor implements HttpInterceptor {
   }
 
   procesarPosiblePagina(
-    event: HttpResponse<any>,
+    event: HttpResponse<any>, 
     respuesta: Respuesta
   ): HttpResponse<any> {
     let eventModificado: HttpResponse<any>;

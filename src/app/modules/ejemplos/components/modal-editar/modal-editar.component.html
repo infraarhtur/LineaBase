@@ -1,105 +1,143 @@
-<div class="modal fade" id="editarUsuarioModal" tabindex="-1" role="dialog" aria-labelledby="editarUsuarioModalLabel" aria-hidden="true">
+<form [formGroup]="frmEditarBase" class="mx-sm-4" (ngSubmit)="editarUsuario()">
+  <div class="modal fade" id="editarUsuarioModal" tabindex="-1" role="dialog" aria-labelledby="editarUsuarioModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editarUsuarioModalLabel">
-                    <span *ngIf="usuario.id === 'new'; else actualizarTitulo">Crear usuario</span>
-                    <ng-template #actualizarTitulo>
-                        <span #crearTitulo>Actualizar usuario <span *ngIf="usuario.nombreUsuario" class="text-primary ml-3">{{ usuario.nombreUsuario }}</span></span>
-                    </ng-template>
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form #frmEditarUsuario #ngEditarUsuario="ngForm" class="mx-sm-4" action="" method="post" novalidate>
-                    <div class="form-group row">
-                        <label for="tipoDocId" class="col-form-label col-4">Tipo de documento de identidad</label>
-                        <div class="col-8">
-                            <select class="form-control" name="tipoDocId" id="tipoDocId" #tipo_doc_id="ngModel" [(ngModel)]="usuario.idTipoDoc" #elTipoDocId required appSeleccionValida>
-                                <option [ngValue]="0" selected>Seleccione...</option>
-                                <option *ngFor="let tipoDocId of tipoDocIds" [ngValue]="tipoDocId.id">{{ tipoDocId.nombre ? tipoDocId.nombre : tipoDocId.id }}</option>
-                            </select>
-                            <div *ngIf="utilsService.esCampoInvalido(tipo_doc_id, 'required')" class="invalid-tooltip">
-                                Este campo es obligatorio
-                            </div>
-                            <div *ngIf="utilsService.esCampoInvalido(tipo_doc_id, 'opcionInvalida')" class="invalid-tooltip">
-                                Este campo es obligatorio o <br>el valor seleccionado no es válido
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="docId" class="col-form-label col-4">Documento de identidad Nro.</label>
-                        <div class="col-8">
-                            <input type="text" class="form-control" min="0" name="docId" id="docId" #doc_id="ngModel" [(ngModel)]="usuario.numeroDocumento" #elDocId required [expresionRegular]="ExpresionesRegulares.soloLetrasYNumeros" (input)="utilsService.restringirTeclado($event, ExpresionesRegulares.noEsLetraNiNumero, _.toUpper)">
-                            <div *ngIf="utilsService.esCampoInvalido(doc_id, 'required')" class="invalid-tooltip">
-                                Este campo es obligatorio
-                            </div>
-                            <div *ngIf="utilsService.esCampoInvalido(doc_id, 'SoloNumeros')" class="invalid-tooltip">
-                                Solo se permiten números en este campo
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="nombre" class="col-form-label col-4">Nombre(s)</label>
-                        <div class="col-8">
-                            <input type="text" class="form-control" name="nombre" id="nombre" #nombre_="ngModel" [(ngModel)]="usuario.nombre" #elNombre required>
-                            <div *ngIf="utilsService.esCampoInvalido(nombre_, 'required')" class="invalid-tooltip">
-                                Este campo es obligatorio
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="apellido" class="col-form-label col-4">Apellido(s)</label>
-                        <div class="col-8">
-                            <input type="text" class="form-control" name="apellido" id="apellido" #apellido_="ngModel" [(ngModel)]="usuario.apellido" #elApellido required>
-                            <div *ngIf="utilsService.esCampoInvalido(apellido_, 'required')" class="invalid-tooltip">
-                                Este campo es obligatorio
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="nombreUsuario" class="col-form-label col-4">Nombre de usuario</label>
-                        <div class="col-8">
-                            <input type="text" class="form-control" name="nombreUsuario" id="nombreUsuario" #nombre_usuario="ngModel" [(ngModel)]="usuario.nombreUsuario" #elNombreUsuario required (input)="utilsService.restringirTeclado($event, ExpresionesRegulares.noEsCaracterUsuario)" [disabled]="usuario.id !== 'new'">
-                            <div *ngIf="utilsService.esCampoInvalido(nombre_usuario, 'required')" class="invalid-tooltip">
-                                Este campo es obligatorio
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="correo" class="col-form-label col-4">Correo Electrónico</label>
-                        <div class="col-8">
-                            <input type="email" class="form-control" name="correo" id="correo" #email="ngModel" [(ngModel)]="usuario.correo" #elCorreo required oninput="this.value = this.value.toLowerCase()">
-                            <div *ngIf="utilsService.esCampoInvalido(email, 'required')" class="invalid-tooltip">
-                                Este campo es obligatorio
-                            </div>
-                            <div *ngIf="utilsService.esCampoInvalido(email, 'email')" class="invalid-tooltip">
-                                El correo electrónico ingresado no es válido
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="rol" class="col-form-label col-4">Rol</label>
-                        <div class="col-8">
-                            <div class="col" [ngClass]="{ 'alert-success': esUsuarioRolesValido, 'alert-danger': esUsuarioRolesValido === false }">
-                                <div *ngFor="let rol of roles; let i = index" class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" [id]="rol.idStr" [value]="rol.idStr" [checked]="esRolSeleccionado(rol.idStr)" (change)="agregarOQuitarRol($event, rol.idStr)">
-                                    <label class="custom-control-label" [for]="rol.idStr">{{ rol.nombre ? rol.nombre : rol.idStr }}</label>
-                                </div>
-                            </div>
-                            <div *ngIf="esUsuarioRolesValido === false" class="alert alert-danger">
-                                <i class="fa fa-exclamation-circle"></i> Este campo es obligatorio, marque al menos una opción
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)="editarUsuario()">Aceptar</button>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editarUsuarioModalLabel">
+            <span *ngIf="usuario.id === 'new'; else actualizarTitulo">Crear usuario</span>
+            <ng-template #actualizarTitulo>
+              <span #crearTitulo>Actualizar usuario <span *ngIf="usuario.nombreUsuario"
+                  class="text-primary ml-3">{{ usuario.nombreUsuario }}</span></span>
+            </ng-template>
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+
+          <div class="form-group row">
+            <label for="tipoDocId" class="col-form-label col-4">Tipo de documento de identidad</label>
+            <div class="col-8">
+              <select class="form-control" formControlName="txtTipoDoc" name="tipoDocId" id="tipoDocId"
+                [(ngModel)]="usuario.idTipoDoc">
+                <option [ngValue]="0" selected>Seleccione...</option>
+                <option *ngFor="let tipoDocId of tipoDocIds" [ngValue]="tipoDocId.id">
+                  {{ tipoDocId.nombre ? tipoDocId.nombre : tipoDocId.id }}</option>
+              </select>
+              <div *ngIf="frmEditarBase.get('txtTipoDoc').errors?.required" class="invalid-tooltip">
+                Este campo es obligatorio
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="docId" class="col-form-label col-4">Documento de identidad Nro.</label>
+
+            <div class="col-8">
+              <input type="text" class="form-control" min="0" name="docId" id="docId"
+                formControlName="txtIdentificacion" [(ngModel)]="usuario.numeroDocumento">
+              <div *ngIf="frmEditarBase.get('txtIdentificacion').errors?.required" class="invalid-tooltip">
+                Este campo es obligatorio
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="nombre" class="col-form-label col-4">Nombre(s)</label>
+            <div class="col-8">
+              <input type="text" class="form-control" name="nombre" id="nombre" formControlName="txtNombre"
+                [(ngModel)]="usuario.nombre">
+              <div *ngIf="frmEditarBase.get('txtNombre').errors?.required" class="invalid-tooltip">
+                Este campo es obligatorio
+              </div>
+              <div *ngIf="frmEditarBase.get('txtNombre').errors?.minlength" class="invalid-tooltip">Debe contener mas de
+                12 caracteres</div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="apellido" class="col-form-label col-4">Apellido(s)</label>
+            <div class="col-8">
+              <input type="text" class="form-control" name="apellido" id="apellido" formControlName="txtApellido"
+                [(ngModel)]="usuario.apellido">
+              <div *ngIf="frmEditarBase.get('txtApellido').errors?.required" class="invalid-tooltip">
+                Este campo es obligatorio
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="lblFecha" class="col-form-label col-4">Fecha</label>
+            <div class="input-group col-8">
+              <input class="form-control col-4" formControlName="txtFecha" placeholder="yyyy-mm-dd" name="lblFecha"
+                ngbDatepicker #ngbdFechaDesde="ngbDatepicker" [maxDate]="ngbFechaFin" [readonly]="true"
+                [(ngModel)]="ngbFechaInicio" required>
+              <div *ngIf="frmEditarBase.get('txtFecha').errors?.required" class="invalid-tooltip">
+                Este campo es obligatorio
+              </div>
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary " (click)="ngbdFechaDesde.toggle()" type="button"> <i
+                    class="fa fa-calendar"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label for="nombreUsuario" class="col-form-label col-4">Nombre de usuario</label>
+            <div class="col-8">
+              <input type="text" class="form-control" name="nombreUsuario" id="nombreUsuario"
+                formControlName="txtUsuario" [(ngModel)]="usuario.nombreUsuario" #elNombreUsuario required
+                [disabled]="usuario.id !== 'new'">
+              <div *ngIf="frmEditarBase.get('txtUsuario').errors?.required" class="invalid-tooltip">
+                Este campo es obligatorio
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="correo" class="col-form-label col-4">Correo Electrónico</label>
+            <div class="col-8">
+              <input type="email" class="form-control" name="correo" id="correo" [(ngModel)]="usuario.correo"
+                formControlName="txtCorreo">
+              <div *ngIf="frmEditarBase.get('txtCorreo').errors?.required" class="invalid-tooltip">Este campo es
+                obligatorio
+              </div>
+              <div *ngIf="frmEditarBase.get('txtCorreo').errors?.email" class="invalid-tooltip">
+                No corresponde a un formato valido
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="form-group row">
+            <label for="rol" class="col-form-label col-4">Rol</label>
+            <div class="col-8">
+              <div class="col"
+                [ngClass]="{ 'alert-success': esUsuarioRolesValido, 'alert-danger': esUsuarioRolesValido === false }">
+                <div *ngFor="let rol of roles; let i = index" class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" formControlName="txtRoles" [id]="rol.idStr"
+                    [value]="rol.idStr" [checked]="esRolSeleccionado(rol.idStr)"
+                    (change)="agregarOQuitarRol($event, rol.idStr)">
+                  <label class="custom-control-label"
+                    [for]="rol.idStr">{{ rol.nombre ? rol.nombre : rol.idStr }}</label>
+                </div>
+              </div>
+              <div *ngIf="esUsuarioRolesValido === false" class="alert alert-danger">
+                <i class="fa fa-exclamation-circle"></i> Este campo es obligatorio, marque al menos una opción
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!frmEditarBase.valid">Aceptar</button>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+</form>

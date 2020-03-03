@@ -1,10 +1,12 @@
 {
   "codigoEstado": "200",
   "mensajeEstado": "Ok",
-  "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIyMDYiLCJzdWIiOiJBZG1pbiIsImF1ZCI6IjE3Mi4xNy41Ljk4IiwiaWF0IjoxNTgxMDA3MzI3LCJleHAiOjE1ODEwMDgyMjd9.zez3wI5TLxzqIuoU1SxTiyhOHXwV2-IGFqlAQbO8KpF8lS093v2TrXnV4zD6ziwXtuzw2S7EaeMLc7cZyQLo1A",
-  "refreshToken": "e39918c2-f425-4dfe-9d63-533040f71988",
-  "tokenType": "Bearer",
-  "user": {
+
+  "resultado": {
+    "accessToken": "eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiIyMDYiLCJzdWIiOiJBZG1pbiIsImF1ZCI6IjE3Mi4xNy41Ljk4IiwiaWF0IjoxNTgxMDA3MzI3LCJleHAiOjE1ODEwMDgyMjd9.zez3wI5TLxzqIuoU1SxTiyhOHXwV2-IGFqlAQbO8KpF8lS093v2TrXnV4zD6ziwXtuzw2S7EaeMLc7cZyQLo1A",
+    "refreshToken": "e39918c2-f425-4dfe-9d63-533040f71988",
+    "tokenType": "Bearer",
+    "user": {
       "usuaUsua": 206,
       "usuaTipo": "nAPP",
       "usuaUsuario": "Admin",
@@ -17,14 +19,14 @@
       "usuaCelular": "3224567890",
       "usuaCelular2": null,
       "usuaPerfil": {
-          "perfPerf": 1,
-          "perfNombre": "Administracion",
-          "perfDescripcion": "Todos los roles",
-          "perfEstado": "ACT",
-          "perfUcreacion": "Admin",
-          "perfFcreacion": "2020-01-10T11:57:21.014+0000",
-          "perfUactualizacion": null,
-          "perfFactualizacion": null
+        "perfPerf": 1,
+        "perfNombre": "Administracion",
+        "perfDescripcion": "Todos los roles",
+        "perfEstado": "ACT",
+        "perfUcreacion": "Admin",
+        "perfFcreacion": "2020-01-10T11:57:21.014+0000",
+        "perfUactualizacion": null,
+        "perfFactualizacion": null
       },
       "usuaUltimoacceso": "2020-02-06T16:42:07.314+0000",
       "usuaFallidos": 0,
@@ -34,203 +36,200 @@
       "usuaUactualiza": null,
       "usuaFactualiza": null,
       "usuaSesion": 1
-  },
-  "listMenu": [
-      {
-          "menuMenu": 2,
-          "menuAlias": "seguridad",
-          "menuTitulo": "Seguridad",
-          "menuPadre": null,
-          "menuUrl": null,
-          "menuIcono": null,
-          "menuHijos": [
-              {
-                  "menuMenu": 5,
-                  "menuAlias": "usuariosSeguridad",
-                  "menuTitulo": "Usuarios",
-                  "menuPadre": 2,
-                  "menuUrl": "Seguridad/Usuarios/home",
-                  "menuIcono": null,
-                  "menuHijos": null,
-                  "ronuPermisos": [
-                      true,
-                      true,
-                      true
-                  ]
-              },
-              {
-                  "menuMenu": 3,
-                  "menuAlias": "rolesSeguridad",
-                  "menuTitulo": "Roles",
-                  "menuPadre": 2,
-                  "menuUrl": "Seguridad/Roles/home",
-                  "menuIcono": null,
-                  "menuHijos": null,
-                  "ronuPermisos": [
-                      false,
-                      true,
-                      false
-                  ]
-              },
-              {
-                  "menuMenu": 4,
-                  "menuAlias": "perfilesSeguridad",
-                  "menuTitulo": "Perfiles",
-                  "menuPadre": 2,
-                  "menuUrl": "Seguridad/Perfiles/home",
-                  "menuIcono": null,
-                  "menuHijos": null,
-                  "ronuPermisos": [
-                      true,
-                      false,
-                      false
-                  ]
-              },
-              {
-                  "menuMenu": 6,
-                  "menuAlias": "auditoriaLogSeguridad",
-                  "menuTitulo": "Auditoria",
-                  "menuPadre": 2,
-                  "menuUrl": "Seguridad/Log-Auditoria/home",
-                  "menuIcono": null,
-                  "menuHijos": null,
-                  "ronuPermisos": [
-                      true,
-                      false,
-                      false
-                  ]
-              }
-          ],
-          "ronuPermisos": [
+    },
+    "listMenu": [{
+        "menuMenu": 2,
+        "menuAlias": "seguridad",
+        "menuTitulo": "Seguridad",
+        "menuPadre": "",
+        "menuUrl": "",
+        "menuIcono": "fa fa-telegram",
+        "menuHijos": [{
+            "menuMenu": 5,
+            "menuAlias": "usuariosSeguridad",
+            "menuTitulo": "Usuarios",
+            "menuPadre": 2,
+            "menuUrl": "Seguridad/Usuarios/home",
+            "menuIcono": "fa fa-user-circle-o",
+            "menuHijos": null,
+            "ronuPermisos": [
+              true,
+              true,
+              true
+            ]
+          },
+          {
+            "menuMenu": 3,
+            "menuAlias": "rolesSeguridad",
+            "menuTitulo": "Roles",
+            "menuPadre": 2,
+            "menuUrl": "Seguridad/Roles/home",
+            "menuIcono": "fa fa-cog",
+            "menuHijos": null,
+            "ronuPermisos": [
               false,
+              true,
+              false
+            ]
+          },
+          {
+            "menuMenu": 4,
+            "menuAlias": "perfilesSeguridad",
+            "menuTitulo": "Perfiles",
+            "menuPadre": 2,
+            "menuUrl": "Seguridad/Perfiles/home",
+            "menuIcono": "fa fa-cog",
+            "menuHijos": null,
+            "ronuPermisos": [
+              true,
               false,
               false
-          ]
+            ]
+          },
+          {
+            "menuMenu": 6,
+            "menuAlias": "auditoriaLogSeguridad",
+            "menuTitulo": "Auditoria",
+            "menuPadre": 2,
+            "menuUrl": "Seguridad/Log-Auditoria/home",
+             "menuIcono": "fa fa-university",
+            "menuHijos": null,
+            "ronuPermisos": [
+              true,
+              false,
+              false
+            ]
+          }
+        ],
+        "ronuPermisos": [
+          false,
+          false,
+          false
+        ]
       },
       {
-          "menuMenu": 7,
-          "menuAlias": "parametrizacion",
-          "menuTitulo": "Parametrizacion",
-          "menuPadre": null,
-          "menuUrl": null,
-          "menuIcono": null,
-          "menuHijos": [
-              {
-                  "menuMenu": 8,
-                  "menuAlias": "bodegaParam",
-                  "menuTitulo": "Bodega",
-                  "menuPadre": 7,
-                  "menuUrl": null,
-                  "menuIcono": null,
-                  "menuHijos": null,
-                  "ronuPermisos": [
-                      true,
-                      true,
-                      true
-                  ]
-              },
-              {
-                  "menuMenu": 9,
-                  "menuAlias": "unidadMedidaParam",
-                  "menuTitulo": "Unidad Medida",
-                  "menuPadre": 7,
-                  "menuUrl": "Parametrizacion/UnidadesMedida/home",
-                  "menuIcono": null,
-                  "menuHijos": null,
-                  "ronuPermisos": [
-                      true,
-                      true,
-                      true
-                  ]
-              }
-          ],
-          "ronuPermisos": [
-              false,
-              false,
-              false
-          ]
+        "menuMenu": 7,
+        "menuAlias": "parametrizacion",
+        "menuTitulo": "Parametrizacion",
+        "menuPadre": "",
+        "menuUrl": "",
+        "menuIcono": "fa fa-university",
+        "menuHijos": [{
+            "menuMenu": 8,
+            "menuAlias": "bodegaParam",
+            "menuTitulo": "Bodega",
+            "menuPadre": 7,
+            "menuUrl": "Bodega/home",
+            "menuIcono": "fa fa-server",
+            "menuHijos": null,
+            "ronuPermisos": [
+              true,
+              true,
+              true
+            ]
+          },
+          {
+            "menuMenu": 9,
+            "menuAlias": "unidadMedidaParam",
+            "menuTitulo": "Unidad Medida",
+            "menuPadre": 7,
+            "menuUrl": "Parametrizacion/UnidadesMedida/home",
+            "menuIcono": "fa fa-cubes",
+            "menuHijos": null,
+            "ronuPermisos": [
+              true,
+              true,
+              true
+            ]
+          }
+        ],
+        "ronuPermisos": [
+          false,
+          false,
+          false
+        ]
       },
       {
-          "menuMenu": 11,
-          "menuAlias": "clientes",
-          "menuTitulo": "Clientes",
-          "menuPadre": null,
-          "menuUrl": null,
-          "menuIcono": null,
-          "menuHijos": [
-              {
-                  "menuMenu": 12,
-                  "menuAlias": "gestion",
-                  "menuTitulo": "Gestion",
-                  "menuPadre": 11,
-                  "menuUrl": "Clientes/Gestion/home",
-                  "menuIcono": null,
-                  "menuHijos": null,
-                  "ronuPermisos": [
-                      true,
-                      true,
-                      true
-                  ]
-              }
-          ],
+        "menuMenu": 11,
+        "menuAlias": "clientes",
+        "menuTitulo": "Clientes",
+        "menuPadre": "",
+        "menuUrl": "Clientes/Log-Auditoria/home",
+        "menuIcono": "fa fa-cubes",
+        "menuHijos": [{
+          "menuMenu": 12,
+          "menuAlias": "gestion",
+          "menuTitulo": "Gestion",
+          "menuPadre": 11,
+          "menuUrl": "Clientes/Gestion/home",
+          "menuIcono": "fa fa-signal",
+          "menuHijos": null,
           "ronuPermisos": [
-              false,
-              false,
-              false
+            true,
+            true,
+            true
           ]
+        }],
+        "ronuPermisos": [
+          false,
+          false,
+          false
+        ]
       }
-  ],
-  "listRole": [
-      {
-          "roleRole": 341,
-          "roleNombre": "TEST XYZABc",
-          "roleDescripcion": "TEST XYZABC",
-          "roleEsta": "ACT",
-          "roleUcreacion": "Admin",
-          "roleFcreacion": "2020-01-24T17:03:23.294+0000",
-          "roleUactualizacion": "Admin",
-          "roleFactualizacion": "2020-01-31T15:21:03.990+0000"
+    ],
+    "listRole": [{
+        "roleRole": 341,
+        "roleNombre": "TEST XYZABc",
+        "roleDescripcion": "TEST XYZABC",
+        "roleEsta": "ACT",
+        "roleUcreacion": "Admin",
+        "roleFcreacion": "2020-01-24T17:03:23.294+0000",
+        "roleUactualizacion": "Admin",
+        "roleFactualizacion": "2020-01-31T15:21:03.990+0000"
       },
       {
-          "roleRole": 302,
-          "roleNombre": "testo",
-          "roleDescripcion": "pruebas",
-          "roleEsta": "ELI",
-          "roleUcreacion": "Admin",
-          "roleFcreacion": "2020-01-22T20:17:14.433+0000",
-          "roleUactualizacion": "Admin",
-          "roleFactualizacion": "2020-01-31T15:20:47.978+0000"
+        "roleRole": 302,
+        "roleNombre": "testo",
+        "roleDescripcion": "pruebas",
+        "roleEsta": "ELI",
+        "roleUcreacion": "Admin",
+        "roleFcreacion": "2020-01-22T20:17:14.433+0000",
+        "roleUactualizacion": "Admin",
+        "roleFactualizacion": "2020-01-31T15:20:47.978+0000"
       },
       {
-          "roleRole": 1,
-          "roleNombre": "Super administrador",
-          "roleDescripcion": "todos los permisos",
-          "roleEsta": "ACT",
-          "roleUcreacion": "Jesus Christ",
-          "roleFcreacion": "2019-10-22T19:09:51.610+0000",
-          "roleUactualizacion": "Admin",
-          "roleFactualizacion": "2020-02-04T21:58:10.311+0000"
+        "roleRole": 1,
+        "roleNombre": "Super administrador",
+        "roleDescripcion": "todos los permisos",
+        "roleEsta": "ACT",
+        "roleUcreacion": "Jesus Christ",
+        "roleFcreacion": "2019-10-22T19:09:51.610+0000",
+        "roleUactualizacion": "Admin",
+        "roleFactualizacion": "2020-02-04T21:58:10.311+0000"
       },
       {
-          "roleRole": 321,
-          "roleNombre": "ROLE TEST",
-          "roleDescripcion": "role test descrip",
-          "roleEsta": "ELI",
-          "roleUcreacion": "Admin",
-          "roleFcreacion": "2020-01-23T23:37:00.288+0000",
-          "roleUactualizacion": "Admin",
-          "roleFactualizacion": "2020-01-23T23:37:00.288+0000"
+        "roleRole": 321,
+        "roleNombre": "ROLE TEST",
+        "roleDescripcion": "role test descrip",
+        "roleEsta": "ELI",
+        "roleUcreacion": "Admin",
+        "roleFcreacion": "2020-01-23T23:37:00.288+0000",
+        "roleUactualizacion": "Admin",
+        "roleFactualizacion": "2020-01-23T23:37:00.288+0000"
       },
       {
-          "roleRole": 2,
-          "roleNombre": "Administrador",
-          "roleDescripcion": "Casi todos permisos modificado",
-          "roleEsta": "ACT",
-          "roleUcreacion": "Jesus Christ",
-          "roleFcreacion": "2019-10-22T19:09:51.610+0000",
-          "roleUactualizacion": "Admin",
-          "roleFactualizacion": "2020-02-04T21:57:28.286+0000"
+        "roleRole": 2,
+        "roleNombre": "Administrador",
+        "roleDescripcion": "Casi todos permisos modificado",
+        "roleEsta": "ACT",
+        "roleUcreacion": "Jesus Christ",
+        "roleFcreacion": "2019-10-22T19:09:51.610+0000",
+        "roleUactualizacion": "Admin",
+        "roleFactualizacion": "2020-02-04T21:57:28.286+0000"
       }
-  ]
-}
+    ]
 
+
+  }
+  
+}

@@ -50,6 +50,7 @@ export class MenuGrupoComponent extends MenuComponent
   }
 
   comprobarEstadoGrupoMenuLinkActivo() {
+     
     const linkActivo = this.rlas.find((rla: ElementRef) => {
       const rlaEl = rla.nativeElement as HTMLElement;
       return rlaEl.classList.contains(this.claseCssLinkActivo);

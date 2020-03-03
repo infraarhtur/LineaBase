@@ -36,7 +36,6 @@ export class NavbarComponent implements OnInit, DoCheck {
   }
 
   cerrarSesion() {
-  // debugger;
   this.appComponet.logout();
 
 

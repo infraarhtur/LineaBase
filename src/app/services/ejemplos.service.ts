@@ -38,9 +38,7 @@ export class EjemplosService {
     return this.http.post(url, usuario, { headers: httpOptions });
   }
 
- obtenerRoles() {
-
-    const url = `${this.urlBase}/api/role`;
-    return this.http.get(url+'?num=1&tam=10');
+ obtenerRoles() {    const url = `${this.urlBase}/api/role`;
+                     return this.http.get(this.jsonUsuarios);
   }
 }

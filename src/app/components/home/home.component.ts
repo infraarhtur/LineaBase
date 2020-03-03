@@ -6,7 +6,8 @@ import { fundido } from '../../animation/animation';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
-import * as $ from 'jquery';
+
+
 // import 'DataTables.net';
 import Swal from 'sweetalert2';
 declare var require: any;
@@ -35,12 +36,8 @@ export class HomeComponent implements OnInit {
 
     if (!isLogeado) {
       this.router.navigate(['/login']);
-
     }
-
-
     /** spinner starts on init */
-
   }
 
   showSuccess() {
@@ -59,5 +56,7 @@ export class HomeComponent implements OnInit {
     }, 5000);
 
   }
+
+ 
 
 }

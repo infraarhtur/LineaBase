@@ -32,10 +32,10 @@ export function obtenerJwtToken() {
   const sesion = sesionService.obtenerSesion();
 
   return sesion.accessToken;
- }
+}
 
- export function obtenerJwtTokentype(){
+export function obtenerJwtTokentype() {
   const sesionService = new SesionService();
   const sesion = sesionService.obtenerSesion();
-  return sesion.tokenType+' ';
- }
+  return sesion.tokenType + ' ';
+}

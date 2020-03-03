@@ -8,7 +8,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { NgForm } from '@angular/forms';
+
 import { HttpErrorResponse } from '@angular/common/http';
 
 //#region modelos
@@ -17,7 +17,7 @@ import { Lista } from 'src/app/models/lista';
 import { Role } from 'src/app/models/role';
 import { ExpresionesRegulares } from '../../../../models/expresiones-regulares';
 //#endregion modelos
-
+import { FormBuilder, FormGroup, NgForm, Validators, AbstractControl } from "@angular/forms";
 //#region servicios
 import { EjemplosService } from 'src/app/services/ejemplos.service';
 import { UtilidadesService } from '../../../../services/utilidades.service';
@@ -26,6 +26,8 @@ import { ToastrService } from 'ngx-toastr';
 import * as $ from 'jquery';
 import * as _ from 'lodash';
 import { finalize } from 'rxjs/operators';
+import { stringify } from 'querystring';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 //#region bibliotecas
 
 
@@ -48,12 +50,18 @@ export class ModalEditarComponent implements OnInit, OnChanges {
   public esUsuarioRolesValido: boolean;
   public ExpresionesRegulares: typeof ExpresionesRegulares;
   public _: _.LoDashStatic;
+  public frmEditarBase: FormGroup;
+  public ngbFechaInicio: NgbDate;
+  public ngbFechaFin: NgbDate;
+  public model;
+  submitted = false;
 
   constructor(
     private ejemplosService: EjemplosService,
     private SpinnerService: Ng4LoadingSpinnerService,
     private toastr: ToastrService,
-    public utilsService: UtilidadesService
+    public utilsService: UtilidadesService,
+    public formBuilder: FormBuilder,
   ) {
     this.ExpresionesRegulares = ExpresionesRegulares;
     this._ = _;
@@ -62,6 +70,7 @@ export class ModalEditarComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.inicializarValores();
     this.inicializarEventos();
+    this.validacionesFormulario();
   }
 
   inicializarEventos() {
@@ -101,8 +110,12 @@ export class ModalEditarComponent implements OnInit, OnChanges {
       this.tipoDocIds = this.listas[0];
 
       this.roles = this.listas[1];
-      console.log(this.roles);
+      // console.log(this.roles);
     }
+  }
+
+  onDateSelection(){
+    alert('sdsdsd')
   }
 
   marcarUsuarioCreadoOModificado = (): void => {
@@ -141,7 +154,8 @@ export class ModalEditarComponent implements OnInit, OnChanges {
     }
     this.mapearUsuarioRoles();
     this.SpinnerService.show();
-    this.usuario.nombreUsuarioCreacion ='administrador';// this.usuarioSesion.nombreUsuario ? this.usuarioSesion.nombreUsuario : 'administrador';
+    // tslint:disable-next-line: max-line-length
+    this.usuario.nombreUsuarioCreacion = 'administrador';// this.usuarioSesion.nombreUsuario ? this.usuarioSesion.nombreUsuario : 'administrador';
 
     if (this.usuario.id === 'new') {
       this.crearUsuario();
@@ -150,13 +164,13 @@ export class ModalEditarComponent implements OnInit, OnChanges {
     }
   }
 
+
   actualizarUsuario() {
     $('#editarUsuarioModal').modal('hide');
-debugger;
     // Cerrar formulario
-          this.toastr.success(
-            `¡Usuario ${this.usuario.nombreUsuario} actualizado con éxito!`
-          );
+    this.toastr.success(
+      `¡Usuario ${this.usuario.nombreUsuario} actualizado con éxito!`
+    );
 
     // this.usuariosService
     //   .actualizarUsuario(this.usuario)
@@ -181,9 +195,9 @@ debugger;
 
 
     $('#editarUsuarioModal').modal('hide');  // Cerrar formulario
-          this.toastr.success(
-            `¡Usuario ${this.usuario.nombreUsuario} creado con éxito!`
-          );
+    this.toastr.success(
+      `¡Usuario ${this.usuario.nombreUsuario} creado con éxito!`
+    );
 
     // this.usuariosService
     //   .crearUsuario(this.usuario)
@@ -239,5 +253,20 @@ debugger;
     }
     this.comprobarValidezUsuarioRoles();
   }
+
+  validacionesFormulario() {
+
+    this.frmEditarBase = this.formBuilder.group({
+      txtTipoDoc: this.formBuilder.control('', [Validators.required]),
+      txtIdentificacion: this.formBuilder.control('', [Validators.required]),
+      txtNombre: this.formBuilder.control('', [Validators.required, Validators.minLength(12)]),
+      txtApellido: this.formBuilder.control('', [Validators.required]),
+      txtUsuario: this.formBuilder.control('', [Validators.required]),
+      txtCorreo: this.formBuilder.control('', [Validators.required, Validators.email]),
+      txtRoles: this.formBuilder.control(false, Validators.requiredTrue),
+      txtFecha: this.formBuilder.control(false, Validators.required),
+    });
+  }
+
 
 }

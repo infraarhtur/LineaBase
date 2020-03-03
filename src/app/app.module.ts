@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import {
   HashLocationStrategy,
   LocationStrategy,
@@ -39,12 +40,9 @@ import { TablasModule } from './modules/tablas/tablas.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
-import { JwtModule } from'@auth0/angular-jwt';
+
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; // this includes the core NgIdleModule but includes keepalive providers for easy wireup
 import { MomentModule } from 'angular2-moment'; // optional, provides moment-style pipes for date formatting
-
-
-
 //#endregion modulos externos
 
 //#region Guards
@@ -52,12 +50,10 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 //#endregion Guards
 
-
-
 //#region Servicios
 import { UtilidadesService } from './services/utilidades.service';
-import { obtenerJwtToken} from './functions/utilidades';
-import { obtenerJwtTokentype} from './functions/utilidades';
+import { obtenerJwtToken } from './functions/utilidades';
+import { obtenerJwtTokentype } from './functions/utilidades';
 
 //#endregion Servicios
 import { environment } from 'src/environments/environment';
@@ -91,18 +87,10 @@ import { httpInterceptorProviders } from './interceptors';
     NgxSpinnerModule,
     Ng4LoadingSpinnerModule.forRoot(),
     TablasModule,
-    JwtModule.forRoot({
-      config: {
-      tokenGetter: obtenerJwtToken,
-      whitelistedDomains: [urlBaseServicio],//se coloca autenticacioncon token  bearer a todas las url en este array ejemplo  urlBaseServicio
-      blacklistedRoutes: [`${environment.urlBaseServicio}/api/auth/signin`,`${environment.urlBaseServicio}/api/auth/logout` ],// se omite  autenticacion con token bearer a la urls de este array
-      authScheme:tipoTokenJwt
-    }
-      },
 
-      ),
-      NgIdleKeepaliveModule.forRoot (),
-      MomentModule, ModalModule.forRoot(),
+    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
+    NgIdleKeepaliveModule.forRoot(),
+    MomentModule, ModalModule.forRoot(),
     // ,
     // ConfiguracionModule
   ],

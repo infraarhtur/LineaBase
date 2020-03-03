@@ -1,18 +1,36 @@
 <ng-template ngFor let-menu [ngForOf]="menuData">
-    <li [class.menu-padre]="menu.tieneHijos">
 
-        <a *ngIf="menu.tieneHijos; else menuEnlaces" [href]="'#' + menu.menuAlias" aria-expanded="false" class="opcion-padre" (click)="alternarSubMenu($event)">
-            <i class="icono left" [ngClass]="menu.menuIcono" aria-hidden="true"></i> {{ menu.menuTitulo }}
-            <i class="icono right fa" [ngClass]="{'fa-chevron-circle-right': ['cerrado', 'ninguno'].includes(obtenerEstadoActual(menu.menuAlias)), 'fa-chevron-circle-down': obtenerEstadoActual(menu.menuAlias) === 'abierto'}" aria-hidden="true"></i>
-        </a>
 
-        <ng-template #menuEnlaces>
-            <a [routerLink]="[menu.menuUrl]" [routerLinkActive]="claseCssLinkActivo" #rla="routerLinkActive">{{ menu.menuTitulo }}</a>
-        </ng-template>
 
-        <ul *ngIf="menu.tieneHijos" class="list-unstyled lista-links" [id]="menu.menuAlias" [@abrirCerrarGrupoMenu]="obtenerEstadoActual(menu.menuAlias)">
-            <app-menu-grupo [menuData]="menu.menuHijos" [estadoActual]="estadoActual"></app-menu-grupo>
-        </ul>
+  <li [class.menu-padre]="menu.tieneHijos">
 
-    </li>
+    <a *ngIf="menu.tieneHijos; else menuEnlaces" [href]="'#' + menu.menuAlias" aria-expanded="false"
+      class="opcion-padre" (click)="alternarSubMenu($event)" [ngClass]="{'no-tiene-padre': !menu.tienePadre}">
+
+  <li>
+    <i class="icono left" [ngClass]="menu.menuIcono" aria-hidden="true"></i>
+  </li>
+  {{ menu.menuTitulo }}
+  <i class="icono right fa"
+    [ngClass]="{'fa-chevron-circle-right': ['cerrado', 'ninguno'].includes(obtenerEstadoActual(menu.menuAlias)), 'fa-chevron-circle-down': obtenerEstadoActual(menu.menuAlias) === 'abierto'}"
+    aria-hidden="true"></i>
+  </a>
+
+  <ng-template #menuEnlaces>
+    <a [routerLink]="[menu.menuUrl]" [routerLinkActive]="claseCssLinkActivo" #rla="routerLinkActive"
+    [ngClass]="{'no-tiene-padre': !menu.tienePadre}" >
+      <i class="icono left" [ngClass]="menu.menuIcono" aria-hidden="true"></i>
+      {{ menu.menuTitulo }}</a>
+
+  </ng-template>
+
+  <ul *ngIf="menu.tieneHijos" class="list-unstyled lista-links" [id]="menu.menuAlias"
+    [@abrirCerrarGrupoMenu]="obtenerEstadoActual(menu.menuAlias)">
+
+    <app-menu-grupo [menuData]="menu.menuHijos" [estadoActual]="estadoActual"></app-menu-grupo>
+  </ul>
+
+  </li>
+
+
 </ng-template>

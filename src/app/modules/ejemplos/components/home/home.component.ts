@@ -101,8 +101,7 @@ export class HomeComponent implements OnInit {
       .subscribe(
         (usuarios: Usuario[]) => {
           this.usuarios = usuarios;
-          console.log(JSON.stringify(this.usuarios) );
-          this.paginacionService.params.cantidadColeccion = this.usuarios.length;
+          // this.paginacionService.params.cantidadColeccion = this.usuarios.length;
           this.aplicarFiltroTabla();
           this.mostrarFilasPagina();
         }
@@ -141,9 +140,10 @@ export class HomeComponent implements OnInit {
 
 
   obtenerRoles(){
-    this.ejemploService.obtenerRoles().subscribe((res:any )=> {
-    debugger;
-      console.log('roles',res.resultado.lista);
+    debugger
+    this.ejemploService.obtenerRoles().subscribe((res: any) => {
+    
+      // console.log('roles',res.resultado.lista);
 
     }
 

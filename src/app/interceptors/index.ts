@@ -5,6 +5,7 @@ import { Provider } from '@angular/core';
 import { ConvertirRespuestasErroresInterceptor } from './convertir-respuestas-errores.interceptor';
 import { MostrarOcultarSpinnerInterceptor } from './mostrar-ocultar-spinner.interceptor';
 import { PaginacionRequestAgregarQueryParamsInterceptor } from './paginacion-request-agregar-query-params.interceptor';
+import { AgregarHeadersInterceptor } from './agregar-headers.interceptor';
 //#endregion interceptores
 
 
@@ -23,6 +24,11 @@ export const httpInterceptorProviders: Provider[] = [
   {
     provide: HTTP_INTERCEPTORS,
     useClass: PaginacionRequestAgregarQueryParamsInterceptor,
+    multi: true
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AgregarHeadersInterceptor,
     multi: true
   }
 ];

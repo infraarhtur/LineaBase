@@ -2,16 +2,26 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { cargarJSON } from '../app/functions/utilidades';
+
+const environmentConfig = cargarJSON('assets/environment-config.json');
+
 export const environment = {
   production: false,
-  urlBaseServicio: 'http://172.168.10.101:8285',//'http://172.168.10.101:8282' ,
+  urlBaseServicio: 'http://172.168.8324',//'http://172.168.10.101:8282' ,
   DTLenguajeES: 'assets/DT-language-ES.json',
   menuSampleData: './assets/menuSampleData.json',
   esAutorizacionesActivadas: false,
-  comprobarSiLogeado:true,
+  listaNegra: [],
+  comprobarSiLogeado: true,
   paginacionNumero: 1,
  paginacionTamanyo: 10,
 };
+
+
+Object.assign(environment, environmentConfig);
+
+// export { environment };
 
 /*
  * For easier debugging in development mode, you can import the following file

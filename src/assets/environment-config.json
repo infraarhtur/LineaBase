@@ -1,4 +1,5 @@
 {
   "urlBaseServicio": "http://172.168.10.101:8285",
-  "esAutorizacionesActivadas": false
+  "esAutorizacionesActivadas": false,
+  "listaNegra": ["/api/auth/signin","/api/auth/logout"]
 }

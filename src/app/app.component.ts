@@ -12,8 +12,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component'
 
 
 // declare var $: any;
+import * as jwt_decode from 'jwt-decode';
 import * as $ from 'jquery';
-
 import * as bootstrap from 'bootstrap';
 import { Router } from '@angular/router';
 
@@ -53,7 +53,15 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
     // private modalService: BsModalService
   ) {
     this.ConfigurarInactividad();
+   
   }
+
+  ngOnInit() {
+    this.inicializarJQuery();
+    this.mostrarUocultarMenus();
+    // this.decodificarToken();
+  }
+
 
   reset() {
     this.idle.watch();
@@ -74,22 +82,32 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
     this.jwtService.regenerarToken();
   }
 
+
+  expirationTime() {
+   
+  }
+
+  decodificarToken() {
+    const sesion = JSON.parse(localStorage.getItem('sesion'));
+    const  token = sesion.accessToken ;
+    const  decoded = jwt_decode(token);
+    // console.log('token', decoded);
+    debugger
+  } 
+
   logout() {
+    debugger
     this.loginService.establecerLogueado(false);
     this.router.navigate(['/']);
     this.loginService.logOut();
-    this.childModal.hide();
+    // this.childModal.hide();
     localStorage.clear();
 
   }
 
   //-------------------------------------------------------------------------------------------------
 
-  ngOnInit() {
-    this.inicializarJQuery();
-    this.mostrarUocultarMenus();
-  }
-
+ 
   noHayAtras() {
     window.history.forward();
   }
@@ -127,11 +145,15 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
   }
 
 
+   
+
+  
+
   ConfigurarInactividad() {
     // sets an idle timeout of 5 seconds, for testing purposes.
-    this.idle.setIdle(15);
+    this.idle.setIdle(5000);
     // sets a timeout period of 5 seconds. after 10 seconds of inactivity, the user will be considered timed out.
-    this.idle.setTimeout(20);
+    this.idle.setTimeout(10000);
     // sets the default interrupts, in this case, things like clicks, scrolls, touches to the document
     this.idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
 
@@ -143,7 +165,6 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
       //this.childModal.hide();
     });
     this.idle.onTimeout.subscribe(() => {
-      // debugger;
       this.childModal.hide();
       this.idleState = 'Timed out!';
       this.timedOut = true;
@@ -152,7 +173,6 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
       this.loginService.logOut();
     });
     this.idle.onIdleStart.subscribe(() => {
-      // debugger;
       this.idleState = 'You\'ve gone idle!'
       // console.log(this.idleState);
       this.childModal.show();
@@ -172,7 +192,6 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
         this.idle.watch();
         this.timedOut = false;
       } else {
-        // debugger;
         this.idle.stop();
       }
     });

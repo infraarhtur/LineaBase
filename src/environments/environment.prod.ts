@@ -9,6 +9,7 @@ const environment = {
   urlBaseServicio: 'http://localhost:52654',
   DTLenguajeES: 'assets/DT-language-ES.json',
   esAutorizacionesActivadas: false,
+  listaNegra: [],
   comprobarSiLogeado:true,
   paginacionNumero: 1,
  paginacionTamanyo: 10,

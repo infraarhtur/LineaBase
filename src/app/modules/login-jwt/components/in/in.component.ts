@@ -40,6 +40,7 @@ export class InComponent implements OnInit {
   public objlogin: Login;
   public _usuario: Usuario;
   private __sesion: Sesion;
+  public infoUserTemporal = '../../assets/sesionFake.json';
 
   constructor(
     private _loginService: LoginJwtService,
@@ -51,7 +52,6 @@ export class InComponent implements OnInit {
   }
 
   ngOnInit() {
-    debugger;
     this._loginService.logOut();
     localStorage.clear();
     localStorage.setItem('IsIdentity', 'false');
@@ -84,33 +84,32 @@ export class InComponent implements OnInit {
       )
       .subscribe(
         (res1: Respuesta) => {
-          debugger;
 
           var res = _.extend(new Sesion(), res1.resultado);
-          //menu ejemplo
-          //  var menuEjemplo= new Object(); //= new  Menu();
-          console.log(JSON.stringify(res));
+          console.log(res)
+          window.localStorage.getItem(res.accessToken);
           let menuEjemplo = _.extend(new Menu(), {
 
-            menuIcono: "fa fa-code",
+            menuIcono: "fa fa-industry",
             menuAlias: "ejemplo1",
             menuTitulo: "Ejemplos1",
             menuUrl: "Ejemplos/home"
           });
+
           res.listMenu.push(menuEjemplo);
-          console.log(res);
+          // console.log(res);
+
           if (_.isNil(res)) {
             localStorage.setItem('IsIdentity', 'false');
             this._loginService.establecerLogueado(false);
             return false;
           } else {
             this.__sesion = _.extend(new Sesion(), res);
+            // console.log(this.__sesion)
             this._usuario = this.__sesion.user;
 
             localStorage.setItem('IsIdentity', 'true');
-            localStorage.setItem(
-              'sesion',
-              JSON.stringify(this.__sesion)
+            localStorage.setItem('sesion', JSON.stringify(this.__sesion)
             );
 
             this.toastr.success(
@@ -121,8 +120,7 @@ export class InComponent implements OnInit {
             this._loginService.establecerLogueado(true);
             return true;
           }
-        }, (error:HttpErrorResponse) =>{
-          debugger;
+        }, (error: HttpErrorResponse) => {
         }
       );
   }

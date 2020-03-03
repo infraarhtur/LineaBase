@@ -24,8 +24,9 @@ export class Menu {
     this.__esAbierto = esAbierto;
   }
 
-  constructor(tieneHijos = false) {
-    this.menuIcono = 'fa fa-industry';
+  constructor(
+    tieneHijos = false
+  ) {
 
     if (tieneHijos) {
       this.ronuPermisos = [];
@@ -35,4 +36,10 @@ export class Menu {
   get tieneHijos(): boolean {
     return !_.isNil(this.menuHijos) && this.menuHijos.length > 0;
   }
+
+ get tienePadre(): boolean{
+   return !_.isNil(this.menuPadre);
+ }
+
+
 }

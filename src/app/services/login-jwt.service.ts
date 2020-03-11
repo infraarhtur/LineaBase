@@ -33,8 +33,8 @@ export class LoginJwtService {
   private esUsuarioLogueado$ = new BehaviorSubject<boolean>(false);
   public urlBase = '';
   public user: Login;
-  public infoUserTemporal = '/assets/sesionFake.json';
-  // public infoUserTemporal = '/assets/datosdeprueba.json';
+  // public infoUserTemporal = '/assets/sesionFake.json';
+  public infoUserTemporal = '/assets/sesion.json';
   public httpOptions = new HttpHeaders()
     .append('Content-Type', 'application/json; charset=UTF-8');
 
@@ -60,18 +60,18 @@ export class LoginJwtService {
       password: credencialesUsuario.contrasena,
       userName: credencialesUsuario.usuario
     }
-    
+
     const respuestaObservable = this.http
       .post(url, login, { headers: httpOptions });
 
     if (catchErrors) {
-      
+
       return respuestaObservable.catch(this.errorHandler);
     }
 
     // return respuestaObservable;
 
-     return this.http .get(this.infoUserTemporal);
+    return this.http.get(this.infoUserTemporal);
 
 
   }

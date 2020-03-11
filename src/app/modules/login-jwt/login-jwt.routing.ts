@@ -7,10 +7,12 @@ import {InComponent } from './components/in/in.component';
 
 const loginJwtRoutes: Routes = [
   {
-    path: 'login', component: MainComponent,
+    path: 'login',
+     component: MainComponent,
+    
     children: [
       { path: '', redirectTo: 'inicio', pathMatch: 'full' },
-      { path: 'inicio', component:InComponent, }
+      { path: 'inicio', component:InComponent}
 
     ]
   }

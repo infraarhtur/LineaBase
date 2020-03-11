@@ -140,7 +140,6 @@ export class HomeComponent implements OnInit {
 
 
   obtenerRoles(){
-    debugger
     this.ejemploService.obtenerRoles().subscribe((res: any) => {
     
       // console.log('roles',res.resultado.lista);

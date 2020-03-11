@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, isDevMode } from '@angular/core';
 import { Router } from '@angular/router';
 
 //#region modelos
@@ -28,6 +28,7 @@ import { ErrorNoControlado } from '../../../../models/error-no-controlado';
 import { Respuesta } from '../../../../models/respuesta';
 import { JsonPipe } from '@angular/common';
 import { Session } from 'protractor';
+import { tokenValidateUtils } from 'src/app/utils/tokenValidateUtils';
 //#endregion bibliotecas
 
 @Component({
@@ -40,13 +41,15 @@ export class InComponent implements OnInit {
   public objlogin: Login;
   public _usuario: Usuario;
   private __sesion: Sesion;
+  public vistas: string[] = [];
   public infoUserTemporal = '../../assets/sesionFake.json';
 
   constructor(
     private _loginService: LoginJwtService,
     private toastr: ToastrService,
     private _router: Router,
-    public utilsService: UtilidadesService
+    public utilsService: UtilidadesService,
+    public tokenValidate: tokenValidateUtils
   ) {
     this.inicializarObjLogin();
   }
@@ -84,39 +87,62 @@ export class InComponent implements OnInit {
       )
       .subscribe(
         (res1: Respuesta) => {
-
-          var res = _.extend(new Sesion(), res1.resultado);
-          console.log(res)
+          let res = _.extend(new Sesion(), res1.resultado);
+          // console.log(res)
           window.localStorage.getItem(res.accessToken);
-          let menuEjemplo = _.extend(new Menu(), {
+          const menuEjemplo = _.extend(new Menu(), {
 
-            menuIcono: "fa fa-industry",
-            menuAlias: "ejemplo1",
-            menuTitulo: "Ejemplos1",
-            menuUrl: "Ejemplos/home"
+            menuIcono: 'fa fa-industry',
+            menuAlias: 'ejemplo1',
+            menuTitulo: 'Ejemplos1',
+            menuUrl: 'Ejemplos/home'
           });
 
-          res.listMenu.push(menuEjemplo);
+          /**
+           * @author Camilo Soler
+           * @Description (Isdevmode) permite validar si la aplicacion esta en modo desarrollo o en despliegue 
+           * atraves de esto se pueden inyectar  metodos,respuestas etc.
+           */
+
+          if (isDevMode()) {
+            res.listMenu.push(menuEjemplo);
+          }
           // console.log(res);
 
           if (_.isNil(res)) {
+            if (res == undefined) {
+              // this.tokenValidate.saveLocalStorage("sesion",res.menus.map(menu =>{return menu}))
+            }
             localStorage.setItem('IsIdentity', 'false');
             this._loginService.establecerLogueado(false);
             return false;
+
           } else {
             this.__sesion = _.extend(new Sesion(), res);
             // console.log(this.__sesion)
             this._usuario = this.__sesion.user;
 
             localStorage.setItem('IsIdentity', 'true');
-            localStorage.setItem('sesion', JSON.stringify(this.__sesion)
-            );
+            localStorage.setItem('sesion', JSON.stringify(this.__sesion));
+            this.__sesion.listMenu.forEach(itemPadre => {
+              if (itemPadre.menuHijos.length > 0) {
 
+                itemPadre.menuHijos.forEach(itemMenuHijo => {
+                  this.vistas.push(itemMenuHijo.menuAlias);
+                  
+
+                });
+              } else {
+                this.vistas.push(itemPadre.menuAlias);
+              }
+            });
+
+            localStorage.setItem('vistas', JSON.stringify(this.vistas));
             this.toastr.success(
               'Inició sesión correctamente',
               'Operación exitosa '
             );
-            this._router.navigate(['/home']);
+            this._router.navigate(['/home ']);
             this._loginService.establecerLogueado(true);
             return true;
           }

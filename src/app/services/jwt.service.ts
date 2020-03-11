@@ -1,3 +1,5 @@
+
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -15,6 +17,7 @@ import { SesionService } from './sesion.service';
 //#region libraries
 import * as _ from 'lodash';
 import { tap } from 'rxjs/operators';
+import * as jwt_decode from 'jwt-decode';
 
 //#endregion libraries
 
@@ -61,5 +64,44 @@ export class JwtService {
       })
     );
   }
- 
+
+/**
+ * @author Camilo Soler
+ * @param num 
+ * @param refreshtime 
+ * @description Metodo el cual crea un timer en cuenta regresiva para regenerar el token
+ */
+  expirationTime(num: number, refreshtime: number) {
+    window.setInterval(() => {
+      num--;
+      if (num === refreshtime) {
+        this.decodificarToken();
+        this.regenerarToken();
+      }
+    }, 1000);
+  }
+
+  
+
+/**
+ * @author Camilo Soler
+ * @description Metodo el cual permite decodificar el token y obtener el tiempo de expiración
+ */
+
+  decodificarToken() {
+    const sesion = JSON.parse(localStorage.getItem('sesion'));
+    if (sesion === null) {
+      localStorage.clear();
+    } else {
+      const token = sesion.accessToken;
+      const decoded = jwt_decode(token);
+      const num: number = decoded.exp - decoded.iat;
+      const refreshtime = num * 10 / 100;
+      this.expirationTime(num, refreshtime);
+    }
+  }
+
+
+
+
 }

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {
-    CanActivate,
-    ActivatedRouteSnapshot,
-    RouterStateSnapshot,
-    Router,
-    CanActivateChild,
-    UrlTree,
-    Data
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  Router,
+  CanActivateChild,
+  UrlTree,
+  Data
 } from '@angular/router';
 import { environment } from '../../environments/environment';
 
@@ -19,45 +19,46 @@ import { Usuario } from '../models/usuario';
 //#region bibliotecas
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
+import { ListaMenu } from '../models/lista-menu';
 //#endregion bibliotecas
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanActivateChild {
-  constructor(private router: Router) {}
+export class AuthGuard implements CanActivate {
 
-  comprobarSiAutorizado(routeData: Data): boolean {
-    if (!environment.esAutorizacionesActivadas) {
-      return true;
-    }
-    const datosBasicos: Usuario = JSON.parse(
-      localStorage.getItem('datosBasicos')
-    );
-    let vistaActual: Vista = JSON.parse(localStorage.getItem('vistaActual'));
+  public listaMenu: ListaMenu[] = [];
 
-    const isAutorizado: boolean = datosBasicos.roles.some((rol: Role) => {
-      // Iterar los roles del usuario en la sesión actual
-      return rol.vistas.some((vista: Vista) => {
-        // Iterar las vistas de cada rol para obtener las rutas permitidas
-        const vistasVacias = [null, undefined, {}, new Vista()];
-        const vistaInRouteData: boolean =
-          'vista' in routeData && ((Array.isArray(routeData.vista) && routeData.vista.every(item => {
-            return item instanceof Vista;
-          })) || routeData.vista instanceof Vista);
-        vistaActual = !vistasVacias.includes(vistaActual)
-          ? vistaActual
-          : vistaInRouteData
-          ? routeData.vista
-          : new Vista();
-        return (Array.isArray(vistaActual) && vistaActual.some(item => {
-          return item.nombre === vista.nombre;
-        })) || vistaActual.nombre === vista.nombre;
-      });
+  public sesion: any;
+
+  public vista: string[];
+  public isAutorizado: boolean;
+  constructor(private router: Router) { }
+
+  /**
+   * @author Camilo Soler
+   * @param routeData 
+   * @description Metodo el cual permite validar las vistas desde el back y compararlas con los alias de cada modulo
+   */
+  comprobarSiAutorizado(routeData: Data): any {
+    debugger
+    this.vista = JSON.parse(localStorage.getItem('vistas'));
+    console.log(this.vista);
+
+    this.isAutorizado = false;
+
+    this.vista.forEach(itemVistas => {
+      if (itemVistas === routeData.vista) {
+        this.isAutorizado = true;
+        return;
+      }
+
     });
-    return isAutorizado;
+
+    return this.isAutorizado;
   }
+
 
   mostrarMensajeNoAutorizado() {
     Swal.fire({
@@ -76,12 +77,14 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    const isAutorizado = this.comprobarSiAutorizado(childRoute.data);
 
-    if (!isAutorizado) {
+    this.comprobarSiAutorizado(childRoute.data);
+    debugger
+
+    if (!this.isAutorizado) {
       this.mostrarMensajeNoAutorizado();
     }
-    return isAutorizado;
+    return this.isAutorizado;
   }
 
   canActivate(
@@ -93,7 +96,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
     const isAutorizado = this.comprobarSiAutorizado(route.firstChild.data);
-
+    debugger
     if (!isAutorizado) {
       this.mostrarMensajeNoAutorizado();
     }

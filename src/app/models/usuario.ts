@@ -1,4 +1,5 @@
 import { Role } from './role';
+import { Vista } from './vista';
 
 export class Usuario {
     public id: string;
@@ -12,4 +13,5 @@ export class Usuario {
     public nombreUsuarioCreacion: string;
     public estado: number | boolean = true;
     public roles: (Role | string)[] = [];
+    public listRole: Role [];
 }

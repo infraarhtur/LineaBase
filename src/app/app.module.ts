@@ -57,13 +57,15 @@ import { obtenerJwtTokentype } from './functions/utilidades';
 
 //#endregion Servicios
 import { environment } from 'src/environments/environment';
-import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 const urlBaseServicio = environment.urlBaseServicio.replace('http://', '');
 const tipoTokenJwt = 'Bearer '; //obtenerJwtTokentype();
 
 //interceptors
 import { httpInterceptorProviders } from './interceptors';
+import { homologacionService } from './services/homologacion.service';
+// import { ModalModule } from 'ngx-bootstrap/modal/public_api';
 
 @NgModule({
   declarations: [
@@ -90,7 +92,7 @@ import { httpInterceptorProviders } from './interceptors';
 
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     NgIdleKeepaliveModule.forRoot(),
-    MomentModule, ModalModule.forRoot(),
+    // MomentModule, ModalModule.forRoot(),
     // ,
     // ConfiguracionModule
   ],
@@ -102,7 +104,8 @@ import { httpInterceptorProviders } from './interceptors';
     UtilidadesService,
     DecimalPipe,
     DatePipe,
-    httpInterceptorProviders
+    httpInterceptorProviders,
+    homologacionService
   ],
   bootstrap: [AppComponent]
 })

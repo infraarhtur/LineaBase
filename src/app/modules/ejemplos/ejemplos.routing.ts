@@ -21,17 +21,17 @@ const vistas = {
 
 const EjemploRoutes: Routes = [{
   path: 'Ejemplos', component: MainComponent,
-  canActivate: [
-    LoginGuard,
-    AuthGuard
-  ],
-  canActivateChild: [
-    LoginGuard,
-    AuthGuard
-  ],
+  // canActivate: [
+  //   LoginGuard,
+  //   AuthGuard
+  // ],
+  // canActivateChild: [
+  //   LoginGuard,
+  //   AuthGuard
+  // ],
   children: [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent, data: { vista: vistas.Usuarios } },
+    { path: 'home', component: HomeComponent, data: { vista: 'EjemplosHome' } },
   ]
 }];
 

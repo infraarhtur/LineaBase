@@ -21,30 +21,3 @@
 </ngx-spinner>
 
 
-
-<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1"
-     role="dialog" aria-labelledby="dialog-child-name">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 id="dialog-child-name" class="modal-title pull-left">Notificaciòn de inactividad! </h4>
-        <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
-          <span aria-hidden="true">&times;</span>
-        </button> -->
-      </div>
-      <div class="modal-body">
-         {{idleState}}
-         <br>
-         <br>
-        <div class="row mrgbtm">
-          <div class="col-md-6">
-              <button type="button" (click)="logout()" class="btn btn-danger"><i class="fa fa-power-off" aria-hidden="true"></i> Salir</button>
-          </div>
-          <div class="col-md-6">
-              <button type="button" (click)="stay()" class="btn btn-success"><i class="fa fa-refresh" aria-hidden="true"></i> Continuar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

@@ -183,6 +183,11 @@
         "roleDescripcion": "TEST XYZABC",
         "roleEsta": "ACT",
         "roleUcreacion": "Admin",
+        "menus" : [{
+          "vista":"seguridad"
+        },{
+          "vista":"parametrizacion"
+        }],
         "roleFcreacion": "2020-01-24T17:03:23.294+0000",
         "roleUactualizacion": "Admin",
         "roleFactualizacion": "2020-01-31T15:21:03.990+0000"
@@ -192,6 +197,7 @@
         "roleNombre": "testo",
         "roleDescripcion": "pruebas",
         "roleEsta": "ELI",
+       
         "roleUcreacion": "Admin",
         "roleFcreacion": "2020-01-22T20:17:14.433+0000",
         "roleUactualizacion": "Admin",
@@ -200,6 +206,7 @@
       {
         "roleRole": 1,
         "roleNombre": "Super administrador",
+        "roleShowMenu": "['clientes','Parametrizacion']",
         "roleDescripcion": "todos los permisos",
         "roleEsta": "ACT",
         "roleUcreacion": "Jesus Christ",

@@ -25,7 +25,7 @@
     "@ng-idle/keepalive": "^8.0.0-beta.4",
     "angular2-moment": "^1.9.0",
     "bootstrap": "^4.4.1",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "font-awesome": "^4.7.0",
     "html2canvas": "^1.0.0-rc.5",
     "jquery": "^3.4.1",
